@@ -1,39 +1,52 @@
-# CLAUDE.md
+## Implementation
 
-Runway is a Plane-style project management app for Frappe (spec: `../../plane_spec.md`).
-Python backend in `runway/`, Vue 3 + TypeScript + frappe-ui frontend in `frontend/`, served at `/runway`.
-User-facing features are documented in `FEATURES.md`; keep it in step when behaviour changes.
+Guidelines for writing good code for a developer:
 
-## Commands
+1. Choose clean code over clever code.
+2. Write object oriented code as much as possible.
+3. Keep function sizes small, ideally 10 lines.
+4. Try and keep files between 100 and 300 lines.
+5. Don't keep too many files in a folder or module. Try and keep it under 15.
+6. Avoid abbreviations.
+7. Use standard API as much as possible.
+8. Reuse. Write as little code as possible.
+9. Use Frappe UI, espresso design system for UI styling.
+10. Always write tests, and make sure they work.
+11. Build the minimum working app, then iterate towards your goals.
+12. Keep the verbosity less in new changes (inline comments, docstrings erc). 
+    Explain only what's absolutely needed in inline comments.
+    Actual changes explanation can be part of commit message. 
 
-```bash
-yarn dev                         # Vite dev server on :8080, proxies to bench
-yarn build                       # -> runway/public/frontend + runway/www/runway.html
-cd frontend && yarn lint         # eslint + prettier --check
-cd frontend && yarn typecheck    # vue-tsc
-bench --site mf.sbm16 run-tests --app runway
-```
+## DocType 
 
-## Backend layout
+* Use column breaks and tab breaks to create user friendly doctype forms
 
-- `runway/runway/doctype/` — all DocTypes (module "Runway"). Work items are named `{PROJECT}-{seq}`; the
-  sequence is allocated under a row lock on `Runway Project.item_sequence`.
-- `runway/permissions.py` — row-level access from workspace + project membership. `frappe.get_all`
-  bypasses it; `get_list` / `get_doc().check_permission` apply it.
-- `runway/utils.py` — access cache (`get_project_roles`, cleared on membership changes), activity log,
-  notifications, subscriptions.
-- `runway/api/*.py` — whitelisted endpoints the frontend calls (`boot`, `work_items`, `cycles`, `modules`,
-  `intake`, `analytics`, `notifications`, `my_work`). Simple CRUD (cycles, modules, views, states, labels)
-  goes through `frappe.client.*`.
-- State *groups* (Backlog/Unstarted/Started/Completed/Cancelled/Triage) drive all reporting; work items
-  denormalize `state_group`.
+## Skills
 
-## Frontend conventions
+Always load frappe-app-dev and frappe-ui skills before any implementation
 
-- Use frappe-ui components and tokens (`ink-*`, `surface-*`, `outline-*`); icons are `lucide-*` classes.
-- `src/api.ts` wraps every backend call; `src/stores/workspace.ts` holds boot data (projects with states,
-  labels, members, cycles, modules).
-- `WorkItemsBoard` renders any scope (project / cycle / module / view / my work) in List, Kanban or
-  Spreadsheet; `useDisplay` persists filters + layout per scope.
-- Cross-component updates go through `utils/bus.ts` (`item-updated`, `item-created`, `create-item`...).
-- The peek panel opens via the `?peek=WEB-12` query param.
+## Planning
+
+For creating specs use tracer bullet approach.
+
+> Tracer bullets comes from the Pragmatic Programmer. When building systems, you want to write code that gets you feedback as quickly as possible. Tracer bullets are small slices of functionality that go through all layers of the system, allowing you to test and validate your approach early. This helps in identifying potential issues and ensures that the overall architecture is sound before investing significant time in development.
+
+Create specs in `specs/`. Maintain a `PROGRESS.md` file to track progress of implementation phases.
+
+## Commit / PR
+
+* Always use conventional commits
+* Commit the spec before you begin
+* Reconcile the specs after implementation
+
+## Testing
+
+Use agent-browser for quick manual e2e checks.
+
+Automated e2e uses Playwright (root `package.json`, specs in `e2e/`). Locally:
+`bench --site apnaslot.localhost execute apna_slot.e2e_seed.setup_e2e_data`, then from the
+app root `npm install && npx playwright install chromium && npm run test:e2e`. CI runs the
+same flow via `.github/workflows/ui-tests.yml`.
+
+
+

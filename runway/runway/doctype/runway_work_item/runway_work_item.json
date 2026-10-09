@@ -1,0 +1,221 @@
+{
+ "actions": [],
+ "allow_bulk_edit": 1,
+ "allow_rename": 1,
+ "creation": "2026-10-09 17:46:34.920547",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "project",
+  "sequence_id",
+  "title",
+  "description",
+  "cb1",
+  "state",
+  "state_group",
+  "priority",
+  "assignees",
+  "labels",
+  "start_date",
+  "due_date",
+  "parent_item",
+  "estimate_point",
+  "cycle",
+  "modules",
+  "meta_section",
+  "sort_order",
+  "is_draft",
+  "archived_at",
+  "completed_at"
+ ],
+ "fields": [
+  {
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Project",
+   "options": "Runway Project",
+   "reqd": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "sequence_id",
+   "fieldtype": "Int",
+   "label": "Sequence Id",
+   "read_only": 1
+  },
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Title",
+   "reqd": 1
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Text Editor",
+   "label": "Description"
+  },
+  {
+   "fieldname": "cb1",
+   "fieldtype": "Column Break",
+   "label": "Cb1"
+  },
+  {
+   "fieldname": "state",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "State",
+   "options": "Runway State",
+   "search_index": 1
+  },
+  {
+   "fieldname": "state_group",
+   "fieldtype": "Select",
+   "label": "State Group",
+   "options": "Backlog\nUnstarted\nStarted\nCompleted\nCancelled\nTriage",
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "default": "None",
+   "fieldname": "priority",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Priority",
+   "options": "Urgent\nHigh\nMedium\nLow\nNone"
+  },
+  {
+   "fieldname": "assignees",
+   "fieldtype": "Table MultiSelect",
+   "label": "Assignees",
+   "options": "Runway Work Item Assignee"
+  },
+  {
+   "fieldname": "labels",
+   "fieldtype": "Table MultiSelect",
+   "label": "Labels",
+   "options": "Runway Work Item Label"
+  },
+  {
+   "fieldname": "start_date",
+   "fieldtype": "Date",
+   "label": "Start Date"
+  },
+  {
+   "fieldname": "due_date",
+   "fieldtype": "Date",
+   "label": "Due Date"
+  },
+  {
+   "fieldname": "parent_item",
+   "fieldtype": "Link",
+   "label": "Parent",
+   "options": "Runway Work Item",
+   "search_index": 1
+  },
+  {
+   "fieldname": "estimate_point",
+   "fieldtype": "Data",
+   "label": "Estimate"
+  },
+  {
+   "fieldname": "cycle",
+   "fieldtype": "Link",
+   "label": "Cycle",
+   "options": "Runway Cycle",
+   "search_index": 1
+  },
+  {
+   "fieldname": "modules",
+   "fieldtype": "Table MultiSelect",
+   "label": "Modules",
+   "options": "Runway Work Item Module"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "meta_section",
+   "fieldtype": "Section Break",
+   "label": "Meta"
+  },
+  {
+   "fieldname": "sort_order",
+   "fieldtype": "Float",
+   "label": "Sort Order"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_draft",
+   "fieldtype": "Check",
+   "label": "Is Draft"
+  },
+  {
+   "fieldname": "archived_at",
+   "fieldtype": "Datetime",
+   "label": "Archived At"
+  },
+  {
+   "fieldname": "completed_at",
+   "fieldtype": "Datetime",
+   "label": "Completed At",
+   "read_only": 1
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-10-09 17:46:38.581690",
+ "modified_by": "Administrator",
+ "module": "Runway",
+ "name": "Runway Work Item",
+ "naming_rule": "By script",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Runway Admin",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Runway User",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "search_fields": "title",
+ "show_title_field_in_link": 1,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "title",
+ "track_changes": 1
+}

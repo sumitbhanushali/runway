@@ -1,33 +1,18 @@
-### Runway
+## Runway
 
-Plane-style project management for Frappe
-
-### Installation
-
-You can install this app using the [bench](https://github.com/frappe/bench) CLI:
+Plane-style project management for Frappe: workspaces, projects, work items (sub-items, relations,
+comments, activity, attachments), cycles with burndown, modules, estimates, List / Kanban / Spreadsheet
+layouts, saved views, intake triage, analytics and an inbox. Vue 3 + frappe-ui frontend at `/runway`.
 
 ```bash
-cd $PATH_TO_YOUR_BENCH
-bench get-app $URL_OF_THIS_REPO --branch develop
-bench install-app runway
+bench get-app runway && bench --site <site> install-app runway
+cd apps/runway && yarn install && yarn build
 ```
 
-### Contributing
+See [FEATURES.md](FEATURES.md) for the full feature guide.
 
-This app uses `pre-commit` for code formatting and linting. Please [install pre-commit](https://pre-commit.com/#installation) and enable it for this repository:
+Users need the **Runway User** role and workspace membership (invite from Workspace settings).
 
-```bash
-cd apps/runway
-pre-commit install
-```
-
-Pre-commit is configured to use the following tools for checking and formatting your code:
-
-- ruff
-- eslint
-- prettier
-- pyupgrade
-
-### License
+#### License
 
 agpl-3.0

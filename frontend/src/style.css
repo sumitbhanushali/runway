@@ -1,0 +1,60 @@
+@import 'frappe-ui/style.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	html,
+	body,
+	#app {
+		height: 100%;
+	}
+
+	body {
+		@apply bg-surface-base text-ink-gray-8 antialiased;
+	}
+}
+
+/* Read-only rich text (descriptions, comments) uses the same ladder as the editor. */
+@layer components {
+	.runway-prose {
+		@apply text-p-base text-ink-gray-8;
+	}
+	.runway-prose :where(h1, h2, h3, h4) {
+		@apply mb-1 mt-4 font-semibold text-ink-gray-9 first:mt-0;
+	}
+	.runway-prose :where(h1) {
+		@apply text-lg;
+	}
+	.runway-prose :where(h2) {
+		@apply text-base;
+	}
+	.runway-prose :where(p) {
+		@apply my-1.5 first:mt-0 last:mb-0;
+	}
+	.runway-prose :where(ul) {
+		@apply my-1.5 list-disc pl-5;
+	}
+	.runway-prose :where(ol) {
+		@apply my-1.5 list-decimal pl-5;
+	}
+	.runway-prose :where(a) {
+		@apply text-ink-blue-link underline underline-offset-2;
+	}
+	.runway-prose :where(code) {
+		@apply rounded-1 bg-surface-gray-2 px-1 py-0.5 font-mono text-xs;
+	}
+	.runway-prose :where(pre) {
+		@apply my-2 overflow-x-auto rounded-3 bg-surface-gray-2 p-3 font-mono text-xs;
+	}
+	.runway-prose :where(blockquote) {
+		@apply my-2 border-l-2 border-outline-gray-2 pl-3 text-ink-gray-7;
+	}
+	.runway-prose :where(img) {
+		@apply my-2 max-w-full rounded-3;
+	}
+	.runway-prose :where(.mention) {
+		@apply rounded-1 bg-surface-gray-3 px-1 text-ink-gray-8;
+	}
+}

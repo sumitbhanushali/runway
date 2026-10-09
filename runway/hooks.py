@@ -5,6 +5,59 @@ app_description = "Plane-style project management for Frappe"
 app_email = "sumit.bhanushali@wildflowerbiz.com"
 app_license = "agpl-3.0"
 
+add_to_apps_screen = [
+	{
+		"name": "runway",
+		"logo": "/assets/runway/images/runway-logo.svg",
+		"title": "Runway",
+		"route": "/runway",
+	}
+]
+
+website_route_rules = [
+	{"from_route": "/runway/<path:app_path>", "to_route": "runway"},
+]
+
+after_install = "runway.install.after_install"
+
+fixtures = [{"dt": "Role", "filters": [["role_name", "in", ["Runway User", "Runway Admin"]]]}]
+
+_RUNWAY_DOCTYPES = [
+	"Runway Workspace",
+	"Runway Workspace Member",
+	"Runway Project",
+	"Runway Project Member",
+	"Runway State",
+	"Runway Label",
+	"Runway Estimate",
+	"Runway Cycle",
+	"Runway Module",
+	"Runway Work Item",
+	"Runway Intake Item",
+	"Runway Comment",
+	"Runway Activity",
+	"Runway Work Item Relation",
+	"Runway Work Item Link",
+	"Runway Subscription",
+	"Runway Notification",
+	"Runway Favorite",
+	"Runway Recent Visit",
+	"Runway View",
+]
+
+permission_query_conditions = {dt: "runway.permissions.query_conditions" for dt in _RUNWAY_DOCTYPES}
+has_permission = {dt: "runway.permissions.has_permission" for dt in [*_RUNWAY_DOCTYPES, "Runway Reaction"]}
+
+doc_events = {
+	"File": {
+		"after_insert": "runway.utils.on_file_attached",
+	}
+}
+
+scheduler_events = {
+	"daily": ["runway.runway.doctype.runway_cycle.runway_cycle.update_cycle_statuses"],
+}
+
 # Apps
 # ------------------
 

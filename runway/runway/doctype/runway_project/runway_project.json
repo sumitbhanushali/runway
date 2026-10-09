@@ -1,0 +1,199 @@
+{
+ "actions": [],
+ "allow_bulk_edit": 1,
+ "allow_rename": 1,
+ "autoname": "field:identifier",
+ "creation": "2026-10-09 17:46:34.290759",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "workspace",
+  "title",
+  "identifier",
+  "emoji",
+  "color",
+  "description",
+  "cb1",
+  "lead",
+  "default_assignee",
+  "network",
+  "estimate",
+  "item_sequence",
+  "archived",
+  "features_section",
+  "cycles_enabled",
+  "modules_enabled",
+  "views_enabled",
+  "intake_enabled"
+ ],
+ "fields": [
+  {
+   "fieldname": "workspace",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Workspace",
+   "options": "Runway Workspace",
+   "reqd": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Title",
+   "reqd": 1
+  },
+  {
+   "description": "Uppercase, up to 12 characters. Used for work item IDs (e.g. WEB-142).",
+   "fieldname": "identifier",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Identifier",
+   "reqd": 1,
+   "set_only_once": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "emoji",
+   "fieldtype": "Data",
+   "label": "Emoji"
+  },
+  {
+   "fieldname": "color",
+   "fieldtype": "Color",
+   "label": "Color"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Text Editor",
+   "label": "Description"
+  },
+  {
+   "fieldname": "cb1",
+   "fieldtype": "Column Break",
+   "label": "Cb1"
+  },
+  {
+   "fieldname": "lead",
+   "fieldtype": "Link",
+   "label": "Lead",
+   "options": "User"
+  },
+  {
+   "fieldname": "default_assignee",
+   "fieldtype": "Link",
+   "label": "Default Assignee",
+   "options": "User"
+  },
+  {
+   "default": "Public",
+   "fieldname": "network",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Network",
+   "options": "Public\nSecret"
+  },
+  {
+   "fieldname": "estimate",
+   "fieldtype": "Link",
+   "label": "Estimate",
+   "options": "Runway Estimate"
+  },
+  {
+   "default": "0",
+   "fieldname": "item_sequence",
+   "fieldtype": "Int",
+   "label": "Item Sequence",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "archived",
+   "fieldtype": "Check",
+   "label": "Archived"
+  },
+  {
+   "fieldname": "features_section",
+   "fieldtype": "Section Break",
+   "label": "Features"
+  },
+  {
+   "default": "1",
+   "fieldname": "cycles_enabled",
+   "fieldtype": "Check",
+   "label": "Cycles Enabled"
+  },
+  {
+   "default": "1",
+   "fieldname": "modules_enabled",
+   "fieldtype": "Check",
+   "label": "Modules Enabled"
+  },
+  {
+   "default": "1",
+   "fieldname": "views_enabled",
+   "fieldtype": "Check",
+   "label": "Views Enabled"
+  },
+  {
+   "default": "0",
+   "fieldname": "intake_enabled",
+   "fieldtype": "Check",
+   "label": "Intake Enabled"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-10-09 17:46:37.180617",
+ "modified_by": "Administrator",
+ "module": "Runway",
+ "name": "Runway Project",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Runway Admin",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Runway User",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "search_fields": "title",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "title"
+}
